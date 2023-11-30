@@ -15,7 +15,12 @@
   <summary>Daftar Isi</summary>
   <ol>
     <li><a href="#tentang-projek">Tentang Projek</a></li>
-    <li><a href="#menjalankan-website">Menjalankan Website</a></li>
+    <li><a href="#menjalankan-website">Menjalankan Website</a>
+      <ul>
+        <li><a href="#prerequisite">Prerequisite</a></li>
+        <li><a href="#cara-menjalankan">Cara Menjalankan</a></li>
+      </ul>
+    </li>
     <li><a href="#erd-dan-diagram-skematik">Erd dan Diagram Skematik</a></li>
     <li><a href="#crud">CRUD</a>
       <ul>
@@ -31,11 +36,30 @@
 
 ## Tentang Projek
 Sebuah website yang menghubungkan pasien dengan rumah sakit yang dipilih untuk membuat reservasi yang sesuai dengan jadwal yang tersedia. Melalui website ini, diharapkan pasien dapat memilih rumah sakit, dokter, dan jadwal yang sesuai dengan kebutuhan mereka. Sementara itu dokter dapat mengelola reservasi yang dipesan. Teknologi yang digunakan dalam membuat website ini adalah Django dan DB Browser for SQLite.
+<p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
 
 ## Menjalankan Website
-1. Buat sebuah folder baru dan pindahkan semua folder dan file yang ada di dalam repositori ini ke dalam folder tersebut
-2. Buka console, pastikan alamat sudah masuk ke dalam folder baru yang sudah dibuat
-3. Ketikkan di dalam console
+Berikut adalah hal-hal yang diperlukan beserta langkah-langkah agar dapat menjalankan website ini secara lokal.
+### Prerequisite
+- Python (minimal versi 3.8)  
+  Download python <a href="https://www.python.org/downloads/">disini</a>  
+  Cek di terminal apakah sudah terinstall dengan benar, ketik:
+  ```sh
+  python --version
+  ```
+- Django  
+  Download Django, di terminal ketik:
+  ```sh
+  python -m pip install django==4.1.6
+  ```
+  Cek di terminal apakah sudah terinstall dengan benar, ketik:
+  ```sh
+  python -m pip show django
+  ```
+### Cara Menjalankan
+1. Download repositori ini dan ekstrak
+2. Buka terminal, pastikan alamat sudah masuk ke dalam folder yang sudah diekstrak
+3. Dalam terminal, ketik:
    ```sh
    python manage.py runserver
    ```
