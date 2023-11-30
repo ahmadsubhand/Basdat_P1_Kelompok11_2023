@@ -30,7 +30,7 @@
 </details>
 
 ## Tentang Projek
-Sebuah website yang menghubungkan pasien dengan rumah sakit yang dipilih untuk membuat reservasi yang sesuai dengan jadwal yang tersedia. Melalui website ini, diharapkan pasien dapat memilih rumah sakit, dokter, dan jadwal yang sesuai dengan kebutuhan mereka. Sementara itu dokter dapat mengelola reservasi yang dipesan. Teknologi yang digunakan dalam membuat website ini adalah Django dan DB Browser for SQLite
+Sebuah website yang menghubungkan pasien dengan rumah sakit yang dipilih untuk membuat reservasi yang sesuai dengan jadwal yang tersedia. Melalui website ini, diharapkan pasien dapat memilih rumah sakit, dokter, dan jadwal yang sesuai dengan kebutuhan mereka. Sementara itu dokter dapat mengelola reservasi yang dipesan. Teknologi yang digunakan dalam membuat website ini adalah Django dan DB Browser for SQLite.
 
 ## Menjalankan Website
 1. Buat sebuah folder baru dan pindahkan semua folder dan file yang ada di dalam repositori ini ke dalam folder tersebut
@@ -53,7 +53,7 @@ Sebuah website yang menghubungkan pasien dengan rumah sakit yang dipilih untuk m
 <p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
 
 ## CRUD
-Create, read, update, delete
+Create, read, update, delete.
 ### Create
 - Membuat akun oleh pasien 
   <br> <img src="/screenshot/signup_pasien.png">
