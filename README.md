@@ -75,7 +75,7 @@ Create, read, update, delete
 - Menerima dan membatalkan reservasi oleh dokter  
   Terdapat icon centang dan silang dalam screenshot [menampilkan jadwal reservasi beserta profil](#dokter) di bagian Read  
 - Mengubah dan membatalkan reservasi oleh pasien  
-  Terdapat icon silang dan pensil dalam screenshot [menampilkan jadwal reservasi beserta profil](#pasien) di bagian Read
+  Terdapat icon pensil dan silang dalam screenshot [menampilkan jadwal reservasi beserta profil](#pasien) di bagian Read
   <br> <img src="/screenshot/edit_reservasi.png">
 ### Delete
 - Menghapus jadwal reservasi oleh pasien  
