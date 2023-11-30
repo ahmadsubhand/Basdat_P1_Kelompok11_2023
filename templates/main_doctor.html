@@ -1,0 +1,160 @@
+<!-- All based on def go_to_main -->
+{% extends 'base.html' %}
+{% block title %}Hallo Doctor {{ doctor.first_name }}!{% endblock title %}
+{% block style %}
+
+{% endblock style %}
+{% block content %}
+<header>
+  <div class="logo">RS Medikakuy</div>
+  <ul class="nav">
+    <li><a href="/#home">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+
+  <div class="register"><a href="/login_doctor/">Sign Out</a> </div>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" height="75" viewBox="0 0 1440 75" fill="none" class="rule">
+    <path d="M0 25H481.336L506.88 50H930.616L956.16 25H1440" stroke="#2C7873" stroke-width="50"/>
+  </svg>
+</header>
+
+<!-- Reservasi -->
+<main class="main-main">
+  <div class="jadwal-wrap">
+    {{ kosong }}
+    
+    <div class="jadwal" {{none}}>
+      <p>Accepted</p>
+      <ul>
+      {% for i in reservation_details %}
+        {% if i.reservation.status == 'diterima' %}
+          <li>
+            <div class="jadwal-left">
+              <b>{{ i.reservation.date|date:"l, j F Y" }}</b><br>
+              {{ i.session.start|time:"H:i" }} - {{ i.session.end|time:"H:i" }} <br> 
+              {{ i.hospital.address }} <br> 
+              {{ i.patient.first_name }} {{ i.patient.age }}' <br>
+              <b>Note</b> <br>
+              You: {{ i.reservation.message_doctor }} <br>
+              Patient: {{ i.reservation.message_patient }} <br>
+            </div>
+            <div class="jadwal-right">
+              <a href="/decline_reservation/{{ i.reservation.id }}/" class="decline" title="Decline"><i class="fa-solid fa-xmark"></i></a>
+              <a href="/message_doctor/{{ i.reservation.id }}/" class="message" title="Note"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+    </div>
+
+    <div class="jadwal" {{none}}>
+      <p>Waiting</p>
+      <ul>
+        {% for i in reservation_details %}
+          {% if i.reservation.status == 'menunggu' %}
+            <li>
+              <div class="jadwal-left">
+                <b>{{ i.reservation.date|date:"l, j F Y" }}</b><br>
+                {{ i.session.start|time:"H:i" }} - {{ i.session.end|time:"H:i" }} <br> 
+                {{ i.hospital.address }} <br> 
+                {{ i.patient.first_name }} {{ i.patient.age }}' <br>
+                <b>Note</b> <br>
+                You: {{ i.reservation.message_doctor }} <br>
+                Patient: {{ i.reservation.message_patient }} <br>
+              </div>
+              <div class="jadwal-right">
+                <a href="/decline_reservation/{{ i.reservation.id }}/" class="decline" title="Decline"><i class="fa-solid fa-xmark"></i></a>
+                <a href="/message_doctor/{{ i.reservation.id }}/" class="message" title="Note"><i class="fa-solid fa-envelope"></i></a>
+                <a href="/accept_reservation/{{ i.reservation.id }}/" class="accept" title="Accept"><i class="fa-solid fa-check"></i></a> 
+              </div>
+            </li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="jadwal" {{none}}>
+      <p>Canceled</p>
+      <ul>
+        {% for i in reservation_details %}
+          {% if i.reservation.status == 'ditolak' %}
+            <li>
+              <div class="jadwal-left">
+                <b>{{ i.reservation.date|date:"l, j F Y" }}</b><br>
+                {{ i.session.start|time:"H:i" }} - {{ i.session.end|time:"H:i" }} <br> 
+                {{ i.hospital.address }} <br> 
+                {{ i.patient.first_name }} {{ i.patient.age }}' <br>
+                <b>Note</b> <br>
+                You: {{ i.reservation.message_doctor }} <br>
+                Patient: {{ i.reservation.message_patient }} <br>
+              </div>
+              <div class="jadwal-right">
+                <a href="/message_doctor/{{ i.reservation.id }}/" class="message" title="Note"><i class="fa-solid fa-envelope"></i></a>
+              </div>
+            </li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+  </div>
+
+
+  <div class="profil-reservasi">
+    <div class="profil-wrap"> 
+      <div class="profil"> 
+        <div class="profil-left"> 
+          Doctor {{ doctor.first_name }} {{doctor.last_name}} <br>
+          {% if doctor.gender == 'm' %}
+            Male
+          {% else %}
+            Female
+          {% endif %}
+          <br> {{ doctor.age }}'
+        </div> 
+        <div class="profil-right"> 
+          <div class="username"> @{{ doctor.username }} </div>
+          <div class="edit-profil" id="not-hover"><i class="fa-solid fa-user-doctor"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="buat-reservasi">
+      Always smile with patient
+      <svg viewBox="0 0 205 193" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M33.7809 106.534C25.4983 106.295 18.5935 112.819 18.3549 121.096C18.1161 129.378 24.6339 136.283 32.9165 136.522C33.5102 136.539 34.0771 136.447 34.6547 136.398C40.5398 165.878 66.0825 188.499 97.4195 189.402C128.751 190.305 155.554 169.193 163.133 140.101C163.707 140.184 164.268 140.308 164.862 140.325C173.138 140.564 180.049 134.046 180.288 125.764C180.526 117.487 174.003 110.576 165.726 110.338" stroke="#37464F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M126.475 118.452C126.38 121.769 123.616 124.372 120.305 124.277C116.994 124.182 114.385 121.423 114.48 118.107C114.576 114.796 117.34 112.187 120.651 112.282C123.961 112.377 126.571 115.142 126.475 118.452Z" fill="#37464F"/>
+        <path d="M84.493 117.242C84.3974 120.559 81.6333 123.162 78.3226 123.067C75.012 122.971 72.4024 120.213 72.498 116.896C72.5934 113.586 75.3578 110.976 78.6684 111.072C81.979 111.167 84.5885 113.932 84.493 117.242Z" fill="#37464F"/>
+        <path d="M52.2923 89.0603L51.7737 107.053C51.5349 115.335 44.6243 121.853 36.3477 121.614L33.3489 121.528L34.2998 88.5417" stroke="#37464F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M148.252 91.8265L147.733 109.819C147.495 118.102 154.012 125.006 162.295 125.245L165.294 125.331L166.244 92.3451" stroke="#37464F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M98.1911 162.629C111.44 163.011 122.491 152.579 122.873 139.331L74.8926 137.948C74.5107 151.196 84.9426 162.247 98.1911 162.629Z" stroke="#37464F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M168.319 20.375L166.59 80.3501L34.6452 76.5467L36.374 16.5716" fill="#63B5F6"/>
+        <path d="M168.319 20.375L166.59 80.3501L34.6452 76.5467L36.374 16.5716" stroke="#37464F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M84.6998 5.95962L195.654 9.15799C198.964 9.25342 201.574 12.0178 201.478 15.3284C201.383 18.645 198.619 21.2484 195.308 21.153L9.38514 15.7936C6.07451 15.6981 3.46491 12.9398 3.56051 9.62318C3.65595 6.31256 6.42028 3.70312 9.73091 3.79856L30.7222 4.40365" fill="#63B5F6"/>
+        <path d="M84.6998 5.95962L195.654 9.15799C198.964 9.25342 201.574 12.0178 201.478 15.3284C201.383 18.645 198.619 21.2484 195.308 21.153L9.38514 15.7936C6.07451 15.6981 3.46491 12.9398 3.56051 9.62318C3.65595 6.31256 6.42028 3.70312 9.73091 3.79856L30.7222 4.40365" stroke="#37464F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M48.7148 4.9223L66.7074 5.44096" stroke="#37464F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12.3838 15.88L11.8175 88.1599L12.3838 15.88Z" fill="white"/>
+        <path d="M12.3838 15.88L11.8175 88.1599" stroke="#37464F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div>Follow Us: </div>
+  <a class="yt" href="#">
+    <i class="fa-brands fa-youtube"></i>
+    <div>RSMedikakuy Official</div>
+  </a>
+  <a class="x" href="#">
+    <i class="fa-brands fa-x-twitter"></i>
+    <div>rsmedikakuy.official</div>
+  </a>
+  <a class="ig" href="#">
+    <i class="fa-brands fa-instagram"></i>
+    <div>rsmedikakuy.official</div>
+  </a>
+</footer>
+{% endblock content %}

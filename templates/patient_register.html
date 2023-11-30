@@ -1,0 +1,60 @@
+<!-- All based on def daftar, def edit_user -->
+{% extends 'base.html' %}
+{% block title %}Sign Up{% endblock title %}
+
+{% block style %}
+
+{% endblock style %}
+
+{% block content %}
+{% load static %}
+<header>
+  <div class="logo">RS Medikakuy</div>
+  <ul class="nav">
+    <li><a href="/#home">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+
+  <div class="register"><a href="/login_patient/">Sign In</a> </div>
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="75" viewBox="0 0 1440 75" fill="none" class="rule">
+    <path d="M0 25H481.336L506.88 50H930.616L956.16 25H1440" stroke="#2C7873" stroke-width="50" />
+  </svg>
+</header>
+
+<main>
+  <div class="main-left">
+    <p class="p1">Exceptional Medical Care For You</p>
+    <p class="p2">Nothing is more important than your health. Together we are working towards a healthier community.</p>
+    <div class="main-img">
+      <img src="{% static 'images/bg-login.gif' %}" alt="">
+    </div>
+  </div>
+
+  <div class="main-right form">
+    <p>Welcome to Medikakuy</p>
+    <form action="/create_account/" method="post">
+      {% csrf_token %}
+      <input type="text" name="username" placeholder="Username" class="input" required>
+      <input type="password" name="password" placeholder="Password" class="input" required>
+      <input type="text" name="first_name" placeholder="First name" class="input" required>
+      <input type="text" name="last_name" placeholder="Last name" class="input" required>
+      <div for="birth-date" id="birth-date" class="input">
+        <label for="birth">Birth date</label>
+        <input type="date" name="birth_date" placeholder="Birth date" id="birth" required>
+      </div>
+      <select name="gender" class="input select-opt">
+        <option value="">Gender</option>
+        <option value="m">Male</option>
+        <option value="f">Female</option>
+      </select>
+      {{ alert }}
+      <input type="submit" value="Create" class="submit">
+    </form>
+
+    <div class="log-more"> Already have an account? <a href="/login_patient">Sign in</a> </div>
+  </div>
+</main>
+{% endblock content %}

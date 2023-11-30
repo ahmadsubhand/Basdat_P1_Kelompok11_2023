@@ -1,0 +1,232 @@
+<!-- All based on def reservsai, def get_hospital, def get_doctor, def get_sessions, def edit_reservasi -->
+{% extends 'base.html' %}
+{% block title %}Edit Reservasi{% endblock title %}
+{% block style %}
+
+{% endblock style %}
+{% block content %}
+{% load static %}
+<header>
+  <div class="logo">RS Medikakuy</div>
+  <ul class="nav">
+    <li><a href="/#home">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+
+  <div class="register"><a href="/main_patient/{{ patient.id }}/">Cancel</a> </div>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" height="75" viewBox="0 0 1440 75" fill="none" class="rule">
+    <path d="M0 25H481.336L506.88 50H930.616L956.16 25H1440" stroke="#2C7873" stroke-width="50"/>
+  </svg>
+</header>
+
+<main>
+  <div class="main-left">
+    <p class="p1">Exceptional Medical Care For You</p>
+    <p class="p2">Nothing is more important than your health. Together we are working towards a healthier community.</p>
+    <div class="main-img">
+      <img src="{% static 'images/bg-login.gif' %}" alt="">
+    </div>
+  </div>
+
+  <div class="main-right form fixcenter">
+    <p>Update Your Reservation</p>
+    <form action="/edit_reservation/" method="post" id="form">
+    {% csrf_token %}
+      <input type="hidden" name="reservasi" value="{{ reservation.id }}">
+      <select name="location" onchange="function_location()" id="location" class="input" required>
+        <option value="">Select location</option>
+        {% for i in location_details %}
+          {% if i.location == location %}
+          <option value="{{i.location}}" selected>{{i.location}}</option>
+          {% else %}
+          <option value="{{i.location}}">{{i.location}}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+      <select name="hospital" onchange="fetchDoctors()" id="hospital" class="input" required>
+        <option value="">Select hospital</option>
+      </select>
+      <input type="date" name="date" onchange="fetchDoctors()" id="date" class="input" required value={{reservation.date}}>
+      <select name="dokter" onchange="function_doctor()" id="dokter" class="input" required>
+        <option value="">Select doctor</option>
+      </select>
+      <select name="session" id="session" class="input" required>
+        <option value="">Select session</option>
+      </select>
+      <input type="submit" value="Update" class="submit">
+    </form>
+  </div>
+</main>
+
+<script>
+  function function_location() {
+    var selectedLocation = document.getElementById('location').value;
+    if (selectedLocation) {
+      var hospitalDropdown = document.getElementById('hospital');
+      hospitalDropdown.innerHTML = '<option value="">Loading...</option';
+
+      // Use AJAX to fetch doctors based on the selected hospital
+      fetch('/get_hospital/?location=' + selectedLocation)
+        .then(response => response.json())
+        .then(data => {
+          hospitalDropdown.innerHTML = '<option value="">Select hospital</option>';
+          data.forEach(function(hospital) {
+            var option = document.createElement('option');
+            option.value = hospital.id;
+            option.text = hospital.address;
+            hospitalDropdown.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching hospitals: ' + error);
+        });
+    } else {
+      // Reset the second dropdown when no location is selected
+      document.getElementById('hospital').innerHTML = '<option value="">Select hospital</option>';
+    }
+
+    document.getElementById('dokter').innerHTML = '<option value="">Select doctor</option>'
+    document.getElementById('session').innerHTML = '<option value="">Select session</option>'
+  }
+
+  function fetchDoctors() {
+    var selectedHospital = document.getElementById('hospital').value;
+    var date = document.getElementById('date').value;
+    var redate = new Date(date)
+    var selectedDate = redate.getDay();
+    if (selectedDate == 0) selectedDate = 7;
+
+    if (selectedDate && selectedHospital) {
+      var doctorsDropdown = document.getElementById('dokter');
+      doctorsDropdown.innerHTML = '<option value="">Loading...</option';
+      
+      // Use AJAX to fetch doctors based on the selected hospital and date
+      fetch('/get_doctor/?hospital_id=' + selectedHospital + '&date_id=' + selectedDate)
+        .then(response => response.json())
+        .then(data => {
+          doctorsDropdown.innerHTML = '<option value="">Select doctor</option>';
+          data.forEach(function (doctor) {
+            var option = document.createElement('option');
+            option.value = doctor.id;
+            option.text = doctor.first_name;
+            doctorsDropdown.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching doctors: ' + error);
+        });
+    } else {
+      // Reset the second dropdown when no location or date are selected
+      document.getElementById('dokter').innerHTML = '<option value="">Select doctor</option>';
+    }
+
+    // Resetting session
+    document.getElementById('session').innerHTML = '<option value="">Select session</option>';
+  }
+
+  function function_doctor() {
+    var selectedDoctor = document.getElementById('dokter').value;
+    if (selectedDoctor) {
+      var sessionDropdown = document.getElementById('session');
+      sessionDropdown.innerHTML = '<option value="">Loading...</option';
+
+      // Use AJAX to fetch doctors based on the selected hospital
+      fetch('/get_sessions/?doctor_id=' + selectedDoctor)
+        .then(response => response.json())
+        .then(data => {
+          sessionDropdown.innerHTML = '<option value="">Select session</option>';
+          data.forEach(function(sesi) {
+            var option = document.createElement('option');
+            option.value = sesi.id;
+            option.text = sesi.start + ' - ' + sesi.end;
+            sessionDropdown.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching sessions: ' + error);
+        });
+    } else {
+      // Reset the second dropdown when no doctor is selected
+      document.getElementById('session').innerHTML = '<option value="">Select session</option>';
+    }
+  }
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    // Hospital
+    var selectedLocation = "{{ location }}";
+    if (selectedLocation) {
+      var hospitalDropdown = document.getElementById('hospital');
+      hospitalDropdown.innerHTML = '<option value="">Loading...</option';
+      // Use AJAX to fetch doctors based on the selected hospital
+      fetch('/get_hospital/?location=' + selectedLocation)
+        .then(response => response.json())
+        .then(data => {
+          hospitalDropdown.innerHTML = '<option value="">Select hospital</option>';
+          data.forEach(function(hospital) {
+            var option = document.createElement('option');
+            option.value = hospital.id;
+            option.text = hospital.address;
+            hospitalDropdown.appendChild(option);
+            if (option.value == "{{ reservation.id_hospital }}") option.selected = true;
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching hospitals: ' + error);
+        });
+    }
+
+    // Dokter
+    var selectedHospital = "{{ reservation.id_hospital }}";
+    var date = "{{ reservation.date }}";
+    var redate = new Date(date);
+    var selectedDate = redate.getDay();
+    if (selectedDate == 0) selectedDate = 7;
+    if (selectedDate && selectedHospital) {
+      var doctorsDropdown = document.getElementById('dokter');
+      doctorsDropdown.innerHTML = '<option value="">Loading...</option';
+      // Use AJAX to fetch doctors based on the selected hospital and date
+      fetch('/get_doctor/?hospital_id=' + selectedHospital + '&date_id=' + selectedDate)
+        .then(response => response.json())
+        .then(data => {
+          doctorsDropdown.innerHTML = '<option value="">Select doctor</option>';
+          data.forEach(function (doctor) {
+            var option = document.createElement('option');
+            option.value = doctor.id;
+            option.text = doctor.first_name;
+            doctorsDropdown.appendChild(option);
+            if (option.value == "{{ reservation.id_doctor }}") option.selected = true;
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching doctors: ' + error);
+        });
+    }
+
+    // Sesi
+    var selectedDoctor = "{{ reservation.id_doctor }}";
+    var sessionDropdown = document.getElementById('session');
+    if (selectedDoctor) {
+      sessionDropdown.innerHTML = '<option value="">Loading...</option';
+      // Use AJAX to fetch doctors based on the selected hospital
+      fetch('/get_sessions/?doctor_id=' + selectedDoctor)
+        .then(response => response.json())
+        .then(data => {
+          sessionDropdown.innerHTML = '<option value="">Select session</option>';
+          data.forEach(function(sesi) {
+            var option = document.createElement('option');
+            option.value = sesi.id;
+            option.text = sesi.start + ' - ' + sesi.end;
+            sessionDropdown.appendChild(option);
+            if (option.value == "{{ reservation.id_session }}") option.selected = true;
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching sessions: ' + error);
+        });
+    }
+  });
+</script>
+{% endblock content %}

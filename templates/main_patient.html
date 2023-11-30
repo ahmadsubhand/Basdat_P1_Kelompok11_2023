@@ -1,0 +1,145 @@
+<!-- All based on def go_to_main -->
+{% extends 'base.html' %}
+{% block title %}Hallo {{ patient.first_name }}!{% endblock title %}
+{% block style %}
+{% endblock style %}
+{% block content %}
+<header>
+  <div class="logo">RS Medikakuy</div>
+  <ul class="nav">
+    <li><a href="/#home">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+
+  <div class="register"><a href="/login_patient/">Sign Out</a> </div>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" height="75" viewBox="0 0 1440 75" fill="none" class="rule">
+    <path d="M0 25H481.336L506.88 50H930.616L956.16 25H1440" stroke="#2C7873" stroke-width="50"/>
+  </svg>
+</header>
+
+<!-- Reservasi -->
+<main class="main-main">
+  <div class="jadwal-wrap">
+    {{ kosong }}
+
+    <div class="jadwal" {{none}}>
+      <p>Accepted</p>
+      <ul>
+      {% for i in reservation_details %}
+        {% if i.reservation.status == 'diterima' %}
+          <li>
+            <div class="jadwal-left">
+              <b>{{ i.reservation.date|date:"l, j F Y" }}</b><br>
+              {{ i.session.start|time:"H:i" }} - {{ i.session.end|time:"H:i" }} <br> 
+              {{ i.hospital.address }} <br> 
+              Doctor {{ i.doctor.first_name }} {{ i.doctor.age }}' <br>
+              <b>Note</b> <br>
+              You: {{ i.reservation.message_patient }} <br>
+              Doctor: {{ i.reservation.message_doctor }} <br>
+            </div>
+            <div class="jadwal-right">
+              <a href="/cancel_reservation/{{ i.reservation.id }}/" class="decline" title="Cancel"><i class="fa-solid fa-xmark"></i></a>
+              <a href="/message_patient/{{ i.reservation.id }}/" class="message" title="Note"><i class="fa-solid fa-envelope"></i></a>
+              <a href="/reservation_edit/{{ i.reservation.id }}/" class="edit" title="Edit"><i class="fa-solid fa-pen"></i></a>
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+    </div>
+
+    <div class="jadwal" {{none}}>
+      <p>Waiting</p>
+      <ul>
+        {% for i in reservation_details %}
+          {% if i.reservation.status == 'menunggu' %}
+            <li>
+              <div class="jadwal-left">
+                <b>{{ i.reservation.date|date:"l, j F Y" }}</b><br>
+                {{ i.session.start|time:"H:i" }} - {{ i.session.end|time:"H:i" }} <br> 
+                {{ i.hospital.address }} <br> 
+                Doctor {{ i.doctor.first_name }} {{ i.doctor.age }}' <br>
+                <b>Note</b> <br>
+                You: {{ i.reservation.message_patient }} <br>
+                Doctor: {{ i.reservation.message_doctor }} <br>
+              </div>
+              <div class="jadwal-right">
+                <a href="/cancel_reservation/{{ i.reservation.id }}/" class="decline" title="Cancel"><i class="fa-solid fa-xmark"></i></a>
+                <a href="/message_patient/{{ i.reservation.id }}/" class="message" title="Note"><i class="fa-solid fa-envelope"></i></a>
+                <a href="/reservation_edit/{{ i.reservation.id }}/" class="edit" title="Edit"><i class="fa-solid fa-pen"></i></a>
+              </div>
+            </li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="jadwal" {{none}}>
+      <p>Canceled</p>
+      <ul>
+        {% for i in reservation_details %}
+          {% if i.reservation.status == 'ditolak' %}
+            <li>
+              <div class="jadwal-left">
+                <b>{{ i.reservation.date|date:"l, j F Y" }}</b><br>
+                {{ i.session.start|time:"H:i" }} - {{ i.session.end|time:"H:i" }} <br> 
+                {{ i.hospital.address }} <br> 
+                Doctor {{ i.doctor.first_name }} {{ i.doctor.age }}' <br>
+                <b>Note</b> <br>
+                You: {{ i.reservation.message_patient }} <br>
+                Doctor: {{ i.reservation.message_doctor }} <br>
+              </div>
+              <div class="jadwal-right">
+                <a href="/delete_reservation/{{ i.reservation.id }}/" class="delete" title="Delete"><i class="fa-solid fa-trash"></i></a>
+                <a href="/message_patient/{{ i.reservation.id }}/" class="message" title="Note"><i class="fa-solid fa-envelope"></i></a>
+              </div>
+            </li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+  </div>
+
+  <div class="profil-reservasi">
+    <div class="profil-wrap"> 
+      <div class="profil"> 
+        <div class="profil-left"> 
+          {{ patient.first_name }} {{patient.last_name}} <br>
+          {% if patient.gender == 'm' %}
+            Male
+          {% else %}
+            Female
+          {% endif %}
+          <br> {{ patient.age }}'
+        </div> 
+        <div class="profil-right"> 
+          <div class="username"> @{{ patient.username }} </div>
+          <a href="/patient_edit/{{ patient.id }}/" class="edit-profil" title="Edit profile"><i class="fa-solid fa-gear"></i></a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="buat-reservasi">
+      Create new reservation? <a href="/reservation_create/{{ patient.id }}">Create</a> 
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div>Follow Us: </div>
+  <a class="yt" href="#">
+    <i class="fa-brands fa-youtube"></i>
+    <div>RSMedikakuy Official</div>
+  </a>
+  <a class="x" href="#">
+    <i class="fa-brands fa-x-twitter"></i>
+    <div>rsmedikakuy.official</div>
+  </a>
+  <a class="ig" href="#">
+    <i class="fa-brands fa-instagram"></i>
+    <div>rsmedikakuy.official</div>
+  </a>
+</footer>
+{% endblock content %}

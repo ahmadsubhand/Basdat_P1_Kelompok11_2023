@@ -1,0 +1,65 @@
+<!-- All based on def daftar, def edit_user -->
+{% extends 'base.html' %}
+{% block title %}Profile Edit{% endblock title %}
+
+{% block style %}
+
+{% endblock style %}
+
+{% block content %}
+{% load static %}
+<header>
+  <div class="logo">RS Medikakuy</div>
+  <ul class="nav">
+    <li><a href="/#home">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+
+  <div class="register"><a href="/main_patient/{{ akun.id }}">Cancel</a> </div>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" height="75" viewBox="0 0 1440 75" fill="none" class="rule">
+    <path d="M0 25H481.336L506.88 50H930.616L956.16 25H1440" stroke="#2C7873" stroke-width="50"/>
+  </svg>
+</header>
+
+<main>
+  <div class="main-left">
+    <p class="p1">Exceptional Medical Care For You</p>
+    <p class="p2">Nothing is more important than your health. Together we are working towards a healthier community.</p>
+    <div class="main-img">
+      <img src="{% static 'images/bg-login.gif' %}" alt="">
+    </div>
+  </div>
+
+  <div class="main-right form fixcenter">
+    <p>Edit Your Account</p>
+    <form action="/edit_account/" method="post">
+    {% csrf_token %}
+      <input type="hidden" name="id" value="{{ akun.id }}">
+      <input type="text" name="username" placeholder="Username" class="input" value="{{ akun.username }}" required>
+      <input type="text" name="first_name" placeholder="First name" class="input" value="{{ akun.first_name }}" required>
+      <input type="text" name="last_name" placeholder="Last name" class="input" value="{{ akun.last_name }}" required>
+      <div for="birth-date" id="birth-date" class="input">
+        <label for="birth">Birth date</label>
+        <input type="date" name="birth_date" placeholder="Birth date" id="birth" value="{{ akun.birth_date }}" required>
+      </div>
+      <select name="gender" class="input select-opt">
+        <option value="">Gender</option>
+        {% if akun.gender == 'm' %}
+        <option value="m" selected>Male</option>
+        {% else %}
+        <option value="m">Male</option>
+        {% endif %}
+        {% if akun.gender == 'f' %}
+        <option value="f" selected>Female</option>
+        {% else %}
+        <option value="f">Female</option>
+        {% endif %}
+      </select>
+      <input type="submit" value="Update" class="submit">
+    </form>
+  </div>
+</main>
+{% endblock content %}

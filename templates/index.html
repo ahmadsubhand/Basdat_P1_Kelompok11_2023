@@ -1,0 +1,323 @@
+{% extends 'base.html' %}
+{% block title %} Welcome to Medikakuy {% endblock title %}
+{% block style %}
+
+{% endblock style %}
+{% block content %}
+{% load static %}
+<div id="home"></div>
+<header class="index-header">
+  <div class="logo">RS Medikakuy</div>
+  <ul class="nav">
+    <li><a href="/#home">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+
+  <div class="register"><a href="/login_patient/">Sign In</a> </div>
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="75" viewBox="0 0 1440 75" fill="none" class="rule">
+    <path d="M0 25H481.336L506.88 50H930.616L956.16 25H1440" stroke="#2C7873" stroke-width="50" />
+  </svg>
+</header>
+
+<section class="index-main" id="home">
+  <div class="main-parallax" id="parallax">
+    <div class="parallax-left" id="left">
+      <div class="left-top">
+        Health is Everything, <br> Take Care of Health
+      </div>
+      <div class="left-mid">
+        RS Medikakuy dedicated to your health and well being, medical innovation with primary care excellence, leading
+        health solutions every step of the way
+      </div>
+      <div class="left-bottom">
+        <a href="/patient_register/">Get Started</a>
+        <a href="#about">Read More</a>
+      </div>
+    </div>
+
+    <div class="parallax-right" id="right">
+      <img src="{% static 'images/doctor-main.jpg' %}" alt="">
+    </div>
+  </div>
+
+  <div class="main-us" id="about">
+    <div class="us-title reveal">Why Us</div>
+    <ul class="us-list reveal">
+      <li>
+        <i class="fa-solid fa-location-dot"></i>
+        <p>Affordable Places</p>
+        <p>We are availabe in 15+ districts in Indonesia</p>
+      </li>
+      <li>
+        <i class="fa-solid fa-calendar-days"></i>
+        <p>24/7 Access</p>
+        <p>24 Hours services in 7 days</p>
+      </li>
+      <li>
+        <i class="fa-solid fa-pen-to-square"></i>
+        <p>Flexible Plans</p>
+        <p>Create your reservation or change the reservation any time</p>
+      </li>
+      <li>
+        <i class="fa-solid fa-face-smile"></i>
+        <p>Best Doctors</p>
+        <p>Meet our experienced and friendly doctors</p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="main-find fix-padding" id="services">
+    <div class="find-left reveal">
+      <div class="find-img"><img src="{% static 'images/doctor-find.jpeg' %}" alt=""></div>
+    </div>
+    <div class="find-right reveal">
+      <p>Find the right doctor right at your fingertips</p>
+      <p>
+        Discover the accessible excellence of RS Medikakuy – where convenience meets choice in scheduling, and a
+        plethora of experienced doctors await to redefine your healthcare experience. Choose as you please!
+      </p>
+    </div>
+  </div>
+
+  <div class="main-find main-good">
+    <div class="find-right reveal">
+      <p>Very good services</p>
+      <p>
+        At RS Medikakuy, immerse yourself in a realm of compassionate and expert healthcare, where we passionately
+        prioritize service excellence and patient well-being – because your journey to wellness deserves nothing less!
+      </p>
+    </div>
+    <div class="find-left reveal">
+      <div class="find-img"><img src="{% static 'images/doctor-good.png' %}" alt=""></div>
+    </div>
+  </div>
+
+  <div class="main-team main-us" id="us">
+    <div class="team-title us-title reveal">Meet Our Doctors</div>
+    <ul class="team-list us-list reveal">
+      <li>
+        <div class="team-img">
+          <img src="{% static 'images/doctor-01.png' %}" alt="">
+        </div>
+        <div class="team-info">
+          <div class="team-name">
+            <div>Agung Saputro</div>
+            <div>DKI Jakarta</div>
+          </div>
+          <div class="team-more">
+            <div>
+              <span>457</span>
+              <span>Patients</span>
+            </div>
+            <div>
+              <span>700+</span>
+              <span>Hours</span>
+            </div>
+            <div>
+              <span>24/7</span>
+              <span>Support</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="team-img">
+          <img src="{% static 'images/doctor-02.png' %}" alt="">
+        </div>
+        <div class="team-info">
+          <div class="team-name">
+            <div>Arief Priyadi</div>
+            <div>DKI Jakarta</div>
+          </div>
+          <div class="team-more">
+            <div>
+              <span>373</span>
+              <span>Patients</span>
+            </div>
+            <div>
+              <span>500+</span>
+              <span>Hours</span>
+            </div>
+            <div>
+              <span>24/7</span>
+              <span>Support</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="team-img">
+          <img src="{% static 'images/doctor-03.png' %}" alt="">
+        </div>
+        <div class="team-info">
+          <div class="team-name">
+            <div>Yulia Lestari</div>
+            <div>DKI Jakarta</div>
+          </div>
+          <div class="team-more">
+            <div>
+              <span>296</span>
+              <span>Patients</span>
+            </div>
+            <div>
+              <span>400+</span>
+              <span>Hours</span>
+            </div>
+            <div>
+              <span>24/7</span>
+              <span>Support</span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="main-review" id="contact">
+  <p class="review-title">Clients Review</p>
+  <div class="review-review" id="mouse">
+    <ul class="review-top" id="review">
+      <li>
+        <div class="review-img">
+          <img src="{% static 'images/review-1.jpeg' %}" alt="">
+        </div>
+        <p class="review-comment">
+          "RS Medikakuy melebihi ekspektasi saya dengan layanan kesehatan yang luar biasa. Mulai dari staf yang ramah
+          hingga keahlian medis yang prima, setiap aspeknya luar biasa. Pengalaman yang sungguh sangat baik!"
+        </p>
+        <p class="review-name">
+          Ahmad Subhan <br>
+          <span>Student</span>
+        </p>
+      </li>
+      <li>
+        <div class="review-img">
+          <img src="{% static 'images/review-2.png' %}" alt="">
+        </div>
+        <p class="review-comment">
+          "Pengalaman saya dengan RS Medikakuy sungguh memukau. Layanan kesehatannya luar biasa, dari kepedulian staf
+          hingga keahlian medis yang terbaik. Sungguh ulasan sangat baik untuk rumah sakit ini!"
+        </p>
+        <p class="review-name">
+          Ahmad Faiq <br>
+          <span>Student</span>
+        </p>
+      </li>
+      <li>
+        <div class="review-img">
+          <img src="{% static 'images/review-3.jpg' %}" alt="">
+        </div>
+        <p class="review-comment">
+          "RS Medikakuy adalah pilihan terbaik! Layanan kesehatan mereka tidak hanya profesional tapi juga penuh
+          perhatian. Staf yang ramah dan dokter berpengalaman membuat kunjungan saya sangat menyenangkan. Ulasan sangat
+          baik untuk RS yang luar biasa ini!"
+        </p>
+        <p class="review-name">
+          Muhammad Baghir <br>
+          <span>Student</span>
+        </p>
+      </li>
+    </ul>
+    <ul class="review-bottom">
+      <li><button class="button" onclick="changeReview(1)"><img src="{% static 'images/review-1.jpeg' %}"
+            alt=""></button></li>
+      <div class="review-ruler"></div>
+      <li><button class="button" onclick="changeReview(2)"><img src="{% static 'images/review-2.png' %}"
+            alt=""></button></li>
+      <div class="review-ruler"></div>
+      <li><button class="button" onclick="changeReview(3)"><img src="{% static 'images/review-3.jpg' %}"
+            alt=""></button></li>
+    </ul>
+  </div>
+</div>
+
+<footer class="nomargin">
+  <div>Follow Us: </div>
+  <a class="yt" href="#">
+    <i class="fa-brands fa-youtube"></i>
+    <div>RSMedikakuy Official</div>
+  </a>
+  <a class="x" href="#">
+    <i class="fa-brands fa-x-twitter"></i>
+    <div>rsmedikakuy.official</div>
+  </a>
+  <a class="ig" href="#">
+    <i class="fa-brands fa-instagram"></i>
+    <div>rsmedikakuy.official</div>
+  </a>
+  <div class="register log-doc"><a href="/login_doctor/">Sign In Doc</a></div>
+</footer>
+
+<script>
+  window.addEventListener("scroll", function () {
+    let value = window.scrollY;
+    // document.getElementById("parallax").style.opacity = 1 - (value * 0.0015);
+    document.getElementById("left").style.transform = "translate(-" + (value * 0.3) + "px, " + (value * 0.3) + "px)";
+    document.getElementById("right").style.transform = "translate(" + (value * 0.3) + "px, " + (value * 0.3) + "px)";
+  });
+
+  window.addEventListener("scroll", function () {
+    let reveals = document.getElementsByClassName("reveal");
+    for (let i = 0; i < reveals.length; i++) {
+      let windowHeight = window.innerHeight;
+      let revealTop = reveals[i].getBoundingClientRect().top;
+      let revealPoint = 200;
+
+      if (revealTop < windowHeight - revealPoint) {
+        reveals[i].classList.add("active");
+      }
+    }
+  })
+
+  let review = document.getElementById("review");
+  let count = 1;
+  let button = document.getElementsByClassName("button");
+  function changeReview(x) {
+    if (x > 3) {
+      x = 1;
+      count = 1;
+    }
+
+    if (x == 1) {
+      review.style.transform = "translateX(100rem)";
+      button[0].style.opacity = "1"
+      button[1].style.opacity = "0.5"
+      button[2].style.opacity = "0.5"
+      count = 1;
+    } else if (x == 2) {
+      review.style.transform = "translateX(0)";
+      button[0].style.opacity = "0.5"
+      button[1].style.opacity = "1"
+      button[2].style.opacity = "0.5"
+      count = 2;
+    } else {
+      review.style.transform = "translateX(-100rem)";
+      button[0].style.opacity = "0.5"
+      button[1].style.opacity = "0.5"
+      button[2].style.opacity = "1"
+      count = 3;
+    }
+  }
+
+  let mark = 1;
+  let mouse = document.getElementById("mouse");
+  mouse.addEventListener("mouseover", function () {
+    mark = 0;
+  });
+
+  mouse.addEventListener("mouseout", function () {
+    mark = 1;
+  });
+
+  setInterval(function () {
+    if (mark === 1) {
+      changeReview(++count);
+    }
+  }, 6000);
+</script>
+
+{% endblock content %}

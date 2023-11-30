@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Note Patient{% endblock title %}
+{% block style %}
+
+{% endblock style %}
+{% block content %}
+{% load static %}
+<header>
+  <div class="logo">RS Medikakuy</div>
+  <ul class="nav">
+    <li><a href="/#home">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+
+  <div class="register"> <a href="/main_patient/{{ reservasi.id_patient }}/">Back</a> </div>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" height="75" viewBox="0 0 1440 75" fill="none" class="rule">
+    <path d="M0 25H481.336L506.88 50H930.616L956.16 25H1440" stroke="#2C7873" stroke-width="50"/>
+  </svg>
+</header>
+
+
+<main>
+  <div class="main-left">
+    <p class="p1">Exceptional Medical Care For You</p>
+    <p class="p2">Nothing is more important than your health. Together we are working towards a healthier community.</p>
+    <div class="main-img">
+      <img src="{% static 'images/bg-login.gif' %}" alt="">
+    </div>
+  </div>
+
+  <div class="main-right fixcenter">
+    <p>Leave a Note to <br> Your Doctor </p>
+    <form action="/note_patient/" method="post">
+    {% csrf_token %}
+      <input type="hidden" value="{{ reservasi.id }}" name="id">
+      <input type="text" name="message" placeholder="Your note" value="{{ reservasi.message_patient }}" class="input" autocomplete="off">
+      <input type="submit" value="Send" class="submit">
+    </form>
+  </div>
+</main>
+{% endblock content %}
