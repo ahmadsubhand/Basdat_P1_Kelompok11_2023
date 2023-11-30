@@ -16,6 +16,7 @@
   <ol>
     <li><a href="#tentang-projek">Tentang Projek</a></li>
     <li><a href="#menjalankan-website">Menjalankan Website</a></li>
+    <li><a href="#erd-dan-diagram-skematik">Erd dan Diagram Skematik</a></li>
     <li><a href="#crud">CRUD</a>
       <ul>
         <li><a href="#create">Create</a></li>
@@ -42,6 +43,13 @@ Sebuah website yang menghubungkan pasien dengan rumah sakit yang dipilih untuk m
    ```sh
    http://127.0.0.1:8000/
    ```
+<p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
+
+## ERD dan Diagram Skematik
+- ERD
+  <br> <img src="/screenshot/erd.png">
+- Diagram skematik
+  <br> <img src="/screenshot/diagramskematik.png">
 <p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
 
 ## CRUD
