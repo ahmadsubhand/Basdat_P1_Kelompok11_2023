@@ -1,0 +1,79 @@
+Medikakuy
+
+* Halaman utama
+Informasi seputar web, ada tombol untuk log in dan sign up
+
+* Halaman login
+Pilih profesi, pasien atau dokter
+
+<------------------------- Pasien ------------------------->
+
+* Halaman login
+Nama pengguna
+Kata sandi
+Belum punya akun? Daftar
+
+* Halaman sign up
+Nama pengguna
+Kata sandi
+Konfirmasi kata sandi
+Nama depan
+Nama belakang
+Jenis kelamin
+Tanggal lahir (untuk mengetahui usia anda)
+Sudah punya akun? Masuk
+Jika berhasil, langsung ke halaman utama
+
+* Halaman utama
+- Menampilkan reservasi yang sudah dibuat
+Jika belum ada: Anda tidak memiliki jadwal reservasi. Ingin buat sekarang? Buat
+Kalau ada: Tampilkan dalam dua bagian, yang sudah di terima atau belum diterima
+Tampilkan hari, tanggal, jam, dan dokter. Tambahkan perintah edit dan batalkan
+Kalau memungkinkan buat dalam bentuk filter
+Buat jadwal baru disini
+
+Yang membedakan perintah edit dan batalkan kemudian buat baru (mirip edit) adalah ketika edit, 
+data yang sebelumnya sudah diterima dokter tidak dihapus sebelum jadwal revisi diterima dokter
+
+- Menampilkan sedikit kotak berisi profil
+Selamat datang, nama depan nama belakang
+@nama pengguna Pria 17 Tahun
+Atau pakai logo
+Jika ditekan akan pergi ke page edit data diri
+
+* Halaman edit data diri
+Nama depan
+Nama belakang
+Jenis kelamin
+Tanggal lahir
+Jika berhasil berikan pesan "berhasil memperbarui data"
+
+* Halaman reservasi
+Page 1 	- Lokasi
+Page 2 	- Rumah sakit, hasil query berdasarkan lokasi
+	- Tanggal, min 1 hari setelah hari ini
+	- Dokter, hasil query berdasarkan rumah sakit
+	  Tampikan nama, usia, jenis kelamin, dan jadwal praktek, versi singkat saja
+	  Ahmad
+	  Pria 19 Tahun Senin-Jumat 08.00 - 17.00
+	  Atau pakai logo
+Jika jadwal kosong, lanjut ke page 4. Jika tidak, reload page 3, dan berikan pesan jadwal tidak tersedia
+Page 4	- Tampilkan detail, konfirmasi
+Setelah selesai kembali ke halaman utama
+
+<------------------------- Dokter ------------------------->
+
+* Halaman login
+Nama pengguna
+Kata sandi
+
+* Halaman utama
+- Menampilkan jadwal reservasi
+Jika belum ada: Tidak ada jadwal reservasi
+Kalau ada: tampilkan dalam dua bagian, yang sudah di terima atau belum diterima
+Tampilkan hari, tanggal, jam, dan pasien. Tambahkan perintah terima atau batalkan
+
+- Menampilkan sedikit kotak berisi profil
+Selamat datang, nama depan nama belakang
+@nama pengguna Pria 17 Tahun
+Atau pakai logo
