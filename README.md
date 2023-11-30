@@ -1,3 +1,4 @@
+<a name="readme-top"></a>
 <h1 align="center">Reservasi Rumah Sakit Medikakuy</h1>
 <p align="center">Basis Data 2023 - P1 Kelompok 11</p>
 
@@ -26,8 +27,15 @@
   </ol>
 </details>
 
-## Deskripsi Singkat
+## Tentang Projek
+Create your reservation or change the reservation any time
+### Deskripsi Singkat
 Sebuah website yang menghubungkan pasien dengan rumah sakit yang dipilih untuk membuat reservasi yang sesuai dengan jadwal yang tersedia. Melalui website ini, diharapkan pasien dapat memilih rumah sakit, dokter, dan jadwal yang sesuai dengan kebutuhan mereka. Sementara itu dokter dapat mengelola reservasi yang dipesan.
+### Teknologi yang Digunakan
+* [![Django][Djangoproject.com]][https://www.djangoproject.com/]
+* [![Next][Next.js]][Next-url]
+[Next-url]: https://nextjs.org/
+<p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
 
 ## CRUD
 Create, read, update, delete
@@ -57,9 +65,11 @@ Create, read, update, delete
 ### Delete
 - Menghapus jadwal reservasi oleh pasien  
   Terdapat icon tempat sampah dalam screenshot [menampilkan jadwal reservasi beserta profil](#pasien) di bagian Read
+<p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
 
 ## Dokumentasi Lainnya
 - Landing page
   <br> <img src="/screenshot/landing_page.png">
 - Kerkom
   <br> <img src="/screenshot/dokumentasi.jpg">
+<p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
