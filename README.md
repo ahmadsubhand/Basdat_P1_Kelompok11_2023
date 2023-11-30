@@ -8,16 +8,16 @@ Sebuah website yang menghubungkan pasien dengan rumah sakit yang dipilih untuk m
 Create, read, update, delete
 ### Create
 - Membuat akun oleh pasien  
-  /screenshot/signup_pasien.png
+  ![Signup Pasien](/screenshot/signup_pasien.png)
 - Membuat reservasi oleh pasien  
-  /screenshot/create_reservasi.png
+  ![Buat Reservasi](/screenshot/create_reservasi.png)
 ### Read
 - Sign in  
-  /screenshot/signin_dokter.png  
-  /screenshot/signin_pasien.png  
+  ![Signin Dokter](/screenshot/signin_dokter.png)  
+  ![Signin Pasien](/screenshot/signin_pasien.png)    
 - Menampilkan jadwal reservasi beserta profil  
-  /screenshot/mainpage_dokter.png {#dokter}  
-  /screenshot/mainpage_pasien.png {#pasien}  
+  ![Mainpage Dokter](/screenshot/mainpage_dokter.png){#dokter}  
+  ![Mainpage Dokter](/screenshot/mainpage_pasien.png){#dokter}  
 ### Update
 - Mengubah data diri oleh pasien  
   /sceenshot/edit_profil.png  
