@@ -14,7 +14,8 @@
 <details>
   <summary>Daftar Isi</summary>
   <ol>
-    <li><a href="#deskripsi-singkat">Deskripsi Singkat</a></li>
+    <li><a href="#tentang-projek">Tentang Projek</a></li>
+    <li><a href="#menjalankan-website">Menjalankan Website</a></li>
     <li><a href="#crud">CRUD</a>
       <ul>
         <li><a href="#create">Create</a></li>
@@ -28,11 +29,19 @@
 </details>
 
 ## Tentang Projek
-Create your reservation or change the reservation any time
-### Deskripsi Singkat
-Sebuah website yang menghubungkan pasien dengan rumah sakit yang dipilih untuk membuat reservasi yang sesuai dengan jadwal yang tersedia. Melalui website ini, diharapkan pasien dapat memilih rumah sakit, dokter, dan jadwal yang sesuai dengan kebutuhan mereka. Sementara itu dokter dapat mengelola reservasi yang dipesan.
-### Teknologi yang Digunakan
-- <svg xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M0 32l34.9 395.8L191.5 480l157.6-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"/></svg> Django
+Sebuah website yang menghubungkan pasien dengan rumah sakit yang dipilih untuk membuat reservasi yang sesuai dengan jadwal yang tersedia. Melalui website ini, diharapkan pasien dapat memilih rumah sakit, dokter, dan jadwal yang sesuai dengan kebutuhan mereka. Sementara itu dokter dapat mengelola reservasi yang dipesan. Teknologi yang digunakan dalam membuat website ini adalah Django dan DB Browser for SQLite
+
+## Menjalankan Website
+1. Buat sebuah folder baru dan pindahkan semua folder dan file yang ada di dalam repositori ini ke dalam folder tersebut
+2. Buka console, pastikan alamat sudah masuk ke dalam folder baru yang sudah dibuat
+3. Ketikkan di dalam console
+   ```sh
+   python manage.py runserver
+   ```
+4. Salin alamat yang muncul ke browser dan jalankan
+   ```sh
+   http://127.0.0.1:8000/
+   ```
 <p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
 
 ## CRUD
