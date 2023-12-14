@@ -42,7 +42,7 @@ Sebuah website yang menghubungkan pasien dengan rumah sakit yang dipilih untuk m
 Berikut adalah hal-hal yang diperlukan beserta langkah-langkah agar dapat menjalankan website ini secara lokal.
 ### Prerequisite
 - Python (minimal versi 3.8)  
-  Download python <a href="https://www.python.org/downloads/">disini</a>  
+  Download python <a href="https://www.python.org/downloads/" target="_blank">disini</a>  
   Cek di terminal apakah sudah terinstall dengan benar, ketik:
   ```sh
   python --version
